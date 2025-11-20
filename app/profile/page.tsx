@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff, User, Mail, Phone, MapPin, CreditCard, Home } from "lucide-react";
-import Navbar from "@/components/Navbar";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -15,26 +14,6 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-
-  const getCartCount = () => {
-    if (typeof window !== 'undefined') {
-      const savedCart = localStorage.getItem('cart');
-      if (savedCart) {
-        try {
-          const cart = JSON.parse(savedCart);
-          return cart.reduce(
-            (total: number, item: { quantity: number }) =>
-              total + (item.quantity || 0),
-            0
-          );
-        } catch (e) {
-          return 0;
-        }
-      }
-    }
-    return 0;
-  };
   
   // Check for tab query parameter
   useEffect(() => {
@@ -45,27 +24,6 @@ export default function ProfilePage() {
         setActiveTab(tab);
       }
     }
-  }, []);
-  
-  // Track cart count for navbar
-  useEffect(() => {
-    setCartCount(getCartCount());
-
-    const handleStorageChange = () => {
-      setCartCount(getCartCount());
-    };
-
-    const handleCartUpdate = () => {
-      setCartCount(getCartCount());
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('cartUpdated', handleCartUpdate);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('cartUpdated', handleCartUpdate);
-    };
   }, []);
   
   // Load user data from localStorage
@@ -288,10 +246,9 @@ export default function ProfilePage() {
       </div>
     );
   }
- 
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-emerald-50">
-      <Navbar cartCount={cartCount} />
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-slate-800">My Profile</h1>

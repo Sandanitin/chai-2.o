@@ -304,7 +304,7 @@ export default function Page() {
               </span>
             </h1>
 
-            <p className="mt-5 sm:mt-7 text-base sm:text-lg md:text-xl text-[#ffe7c2] max-w-2xl leading-relaxed drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]">
+            <p className="mt-5 sm:mt-7 text-base sm:text-lg md:text-xl text-[#f5eddc]/85 max-w-2xl leading-relaxed">
               1920×650 stories of warmth, spice, and soulful nostalgia sliding every three seconds.
               From Irani chai to Osmania biscuits, we pour authentic Hyderabadi comfort into every cup and plate.
             </p>
@@ -335,7 +335,7 @@ export default function Page() {
 
             <div className="mt-6">
               <Button 
-                className="py-4 sm:py-5 px-7 sm:px-9 text-base sm:text-lg font-semibold rounded-2xl bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] shadow-[0_0_30px_rgba(240,163,92,0.55)] hover:shadow-[0_0_40px_rgba(240,163,92,0.8)] hover:from-[#f5b97a] hover:to-[#e08a4a] border border-[#f0a35c]/60 transition-all duration-300 transform hover:scale-105"
+                className="py-4 px-6 text-base font-medium rounded-xl shadow-lg bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a] transition-all duration-300 transform hover:scale-105"
                 size="lg"
                 asChild
               >
@@ -696,158 +696,6 @@ export default function Page() {
         </Container>
       </Section>
 
-      {/* PACKAGES */}
-      <Section id="packages" className="bg-[#0b0503] pt-20 lg:pt-24">
-        <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[#2b160d] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f5eddc]/80">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#f0a35c]"></span>
-              Popular Party Packages
-            </p>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight">
-              Pick a vibe, we&apos;ll handle the chai.
-            </h2>
-            <p className="mt-3 text-sm md:text-base text-[#f5eddc]/70">
-              From cosy office breaks to full desi house parties, choose a ready-made vibe and we&apos;ll bring the chai, bites, and setup.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <div className="relative h-full rounded-3xl bg-gradient-to-b from-[#2b160d] via-[#1a0d08] to-[#050302] border border-[#2d1a11]/70 p-6 shadow-xl">
-              <span className="absolute right-5 top-5 rounded-full bg-[#f0a35c]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f0a35c]">
-                Most Popular
-              </span>
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#f0a35c]/15 text-[#f0a35c] mb-4">
-                <Coffee className="h-5 w-5" />
-              </div>
-              <h3 className="text-lg font-semibold">Office Chai Break</h3>
-              <p className="mt-2 text-sm text-[#f5eddc]/75">
-                Perfect for teams of 20–50. Fresh chai, biscuits and light snacks at your desk.
-              </p>
-              <ul className="mt-4 space-y-1.5 text-sm text-[#f5eddc]/80">
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0a35c]"></span>
-                  Bulk hot chai service
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0a35c]"></span>
-                  Assorted biscuits &amp; tea-time snacks
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0a35c]"></span>
-                  On-site chai counter setup
-                </li>
-              </ul>
-              <div className="mt-6 flex items-center justify-between text-sm">
-                <div className="text-[#f5eddc]/80">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-[#f5eddc]/50">
-                    Starting at
-                  </div>
-                  <div className="text-base font-semibold">₹X,XXX</div>
-                </div>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#f0a35c] to-[#c87534] px-4 py-2 text-xs font-semibold text-[#120a06] shadow-md transition-all duration-200 hover:shadow-lg hover:scale-[1.03]"
-                >
-                  Get This Package
-                </a>
-              </div>
-            </div>
-
-            <div className="relative h-full rounded-3xl bg-gradient-to-b from-[#25100a] via-[#160a06] to-[#050302] border border-[#2d1a11]/70 p-6 shadow-xl">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#f97316]/10 text-[#f97316] mb-4">
-                <Sandwich className="h-5 w-5" />
-              </div>
-              <h3 className="text-lg font-semibold">Birthday Chai&apos;lebration</h3>
-              <p className="mt-2 text-sm text-[#f5eddc]/75">
-                For cosy birthdays and get-togethers with friends and family.
-              </p>
-              <ul className="mt-4 space-y-1.5 text-sm text-[#f5eddc]/80">
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]"></span>
-                  Signature chai station
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]"></span>
-                  Savoury snacks (vada pav, bites &amp; more)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]"></span>
-                  Simple decor &amp; setup add-ons
-                </li>
-              </ul>
-              <div className="mt-6 flex items-center justify-between text-sm">
-                <div className="text-[#f5eddc]/80">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-[#f5eddc]/50">
-                    Custom quote
-                  </div>
-                  <div className="text-base font-semibold">Tell us your guest count</div>
-                </div>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-xl border border-[#f97316]/60 px-4 py-2 text-xs font-semibold text-[#f5eddc] shadow-sm transition-all duration-200 hover:bg-[#f97316]/10 hover:scale-[1.03]"
-                >
-                  Plan My Party
-                </a>
-              </div>
-            </div>
-
-            <div className="relative h-full rounded-3xl bg-gradient-to-b from-[#1f120b] via-[#120806] to-[#050302] border border-[#2d1a11]/70 p-6 shadow-xl">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#22c55e]/10 text-[#22c55e] mb-4">
-                <Utensils className="h-5 w-5" />
-              </div>
-              <h3 className="text-lg font-semibold">Desi House Party</h3>
-              <p className="mt-2 text-sm text-[#f5eddc]/75">
-                Full spread for bigger gatherings — chai, snacks and hearty mains.
-              </p>
-              <ul className="mt-4 space-y-1.5 text-sm text-[#f5eddc]/80">
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]"></span>
-                  Chai, biscuits &amp; starters
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]"></span>
-                  Biryani / mains for large groups
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]"></span>
-                  Staffed live stations (on request)
-                </li>
-              </ul>
-              <div className="mt-6 flex items-center justify-between text-sm">
-                <div className="text-[#f5eddc]/80">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-[#f5eddc]/50">
-                    Ideal for
-                  </div>
-                  <div className="text-base font-semibold">40+ guests</div>
-                </div>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-xl bg-[#0b0503] px-4 py-2 text-xs font-semibold text-[#f5eddc] border border-[#22c55e]/60 shadow-sm transition-all duration-200 hover:bg-[#22c55e]/10 hover:scale-[1.03]"
-                >
-                  Talk to Us
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 text-center text-sm text-[#f5eddc]/70 border-t border-[#2d1a11] pt-8 sm:grid-cols-3">
-            <div>
-              <div className="text-2xl font-semibold text-[#f0a35c]">500+</div>
-              <div className="mt-1 text-xs uppercase tracking-[0.2em]">Cups poured at events</div>
-            </div>
-            <div>
-              <div className="text-2xl font-semibold text-[#f0a35c]">100+</div>
-              <div className="mt-1 text-xs uppercase tracking-[0.2em]">Parties catered</div>
-            </div>
-            <div>
-              <div className="text-2xl font-semibold text-[#f0a35c]">4.8★</div>
-              <div className="mt-1 text-xs uppercase tracking-[0.2em]">Average host rating</div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
       {/* Floating Catering Button - Mobile Only */}
       <div className="fixed bottom-6 right-6 z-50 lg:hidden">
         <a 
@@ -897,17 +745,12 @@ export default function Page() {
       {/* FOOTER */}
       <footer className="bg-[#120a07] text-[#f5eddc] border-t border-[#2d1a11]">
         <Container className="py-10 grid md:grid-cols-3 gap-8">
-          <div className="flex items-start gap-4">
-            <div className="h-14 w-14 rounded-full border-2 border-[#2d1a11] overflow-hidden bg-[#050302] flex-shrink-0 shadow-md shadow-black/40">
-              <img src="/images/logo.jpg" alt="Chai Bisket logo" className="h-full w-full object-cover" />
-            </div>
-            <div>
-              <div className="text-2xl md:text-3xl font-semibold">Chai Bisket LLC</div>
-              <div className="text-[#f5eddc]/70 text-sm">an Indian eatery</div>
-              <p className="mt-3 text-[#f5eddc]/70 text-sm max-w-sm">
-                Light, emotional, and full of passion & food — welcome to your new chai adda in Cumming.
-              </p>
-            </div>
+          <div>
+            <div className="text-xl font-semibold">Chai Bisket LLC</div>
+            <div className="text-[#f5eddc]/70 text-sm">an Indian eatery</div>
+            <p className="mt-3 text-[#f5eddc]/70 text-sm max-w-sm">
+              Light, emotional, and full of passion & food — welcome to your new chai adda in Cumming.
+            </p>
           </div>
           <div>
             <div className="font-semibold mb-3">Quick Links</div>
