@@ -333,6 +333,22 @@ export default function Page() {
               </Button>
             </div>
 
+            <div className="mt-6">
+              <Button 
+                className="py-4 px-6 text-base font-medium rounded-xl shadow-lg bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a] transition-all duration-300 transform hover:scale-105"
+                size="lg"
+                asChild
+              >
+                <a href="#specials" className="flex items-center justify-center gap-2">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                  </span>
+                  Today's Special
+                </a>
+              </Button>
+            </div>
+
             <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-[#f5eddc]/80">
               {[
                 { label: "Freshly brewed chai", color: "#f0a35c" },
@@ -391,6 +407,86 @@ export default function Page() {
           <span className="hidden md:inline-block mx-4 md:mx-8">Kulfi & Falooda</span>
         </div>
       </div>
+
+      {/* TODAY'S SPECIAL */}
+      <Section id="specials" className="py-16 bg-[#0b0503]">
+        <Container>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#f5eddc] mb-4">Today's Special</h2>
+            <p className="text-[#f5eddc]/80 max-w-2xl mx-auto">
+              Discover our chef's special creations for the day, crafted with the finest ingredients and authentic flavors.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Special Item 1 */}
+            <div className="bg-[#120a07] rounded-2xl overflow-hidden border border-[#2d1a11] shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="relative h-48">
+                <Image
+                  src="/images/Hyderabadi Biryani.jpg"
+                  alt="Special Hyderabadi Biryani"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-bold text-[#f5eddc]">Hyderabadi Biryani</h3>
+                  <span className="text-amber-200 font-bold">$12.99</span>
+                </div>
+                <p className="text-[#f5eddc]/80 mb-4">Authentic dum biryani with tender meat and fragrant basmati rice.</p>
+                <Button className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]">
+                  Add to Cart
+                </Button>
+              </div>
+            </div>
+            
+            {/* Special Item 2 */}
+            <div className="bg-[#120a07] rounded-2xl overflow-hidden border border-[#2d1a11] shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="relative h-48">
+                <Image
+                  src="/images/iran chaai.png"
+                  alt="Special Irani Chai"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-bold text-[#f5eddc]">Irani Chai</h3>
+                  <span className="text-amber-200 font-bold">$3.99</span>
+                </div>
+                <p className="text-[#f5eddc]/80 mb-4">Traditional strong tea with spices, served with Osmania biscuits.</p>
+                <Button className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]">
+                  Add to Cart
+                </Button>
+              </div>
+            </div>
+            
+            {/* Special Item 3 */}
+            <div className="bg-[#120a07] rounded-2xl overflow-hidden border border-[#2d1a11] shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="relative h-48">
+                <Image
+                  src="/images/Chicken 65.jpg"
+                  alt="Special Chicken 65"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-bold text-[#f5eddc]">Chicken 65</h3>
+                  <span className="text-amber-200 font-bold">$9.99</span>
+                </div>
+                <p className="text-[#f5eddc]/80 mb-4">Spicy deep-fried chicken with authentic South Indian spices.</p>
+                <Button className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]">
+                  Add to Cart
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       {/* MENU SECTION */}
       <Section id="menu" className="py-16 bg-[#0b0503]">

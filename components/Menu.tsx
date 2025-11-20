@@ -5,169 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Plus, ShoppingCart, ChevronDown, ChevronLeft, ChevronRight, List, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
-const menuItems = [
-  {
-    id: 1,
-    name: 'Royal Sharbati Atta',
-    price: 12.99,
-    description: 'Stone-milled wheat flour that keeps rotis soft and fluffy.',
-    image: '/images/Hyderabadi Biryani.jpg',
-    category: 'ATTA',
-  },
-  {
-    id: 2,
-    name: 'Whole Wheat Chakki Atta',
-    price: 10.49,
-    description: 'Traditional chakki grinding for deep aroma and softness.',
-    image: '/images/Bun Maska.jpg',
-    category: 'ATTA',
-  },
-  {
-    id: 3,
-    name: 'Tangy Tomato Chutney',
-    price: 5.49,
-    description: 'Slow-cooked tomatoes, garlic, and spices for a zingy finish.',
-    image: '/images/Chicken 65.jpg',
-    category: "SAUCE AND CHUTNEY'S",
-  },
-  {
-    id: 4,
-    name: 'Coconut Peanut Chutney',
-    price: 4.49,
-    description: 'Roasted peanuts with fresh coconut for dosa mornings.',
-    image: '/images/iran chaai.png',
-    category: "SAUCE AND CHUTNEY'S",
-  },
-  {
-    id: 5,
-    name: 'Multigrain Flour Blend',
-    price: 8.99,
-    description: 'Ragi, jowar, and whole wheat blended for added fibre.',
-    image: '/images/Bun Maska.jpg',
-    category: 'FLOURS',
-  },
-  {
-    id: 6,
-    name: 'Besan (Gram Flour)',
-    price: 6.49,
-    description: 'Fine gram flour for crisp pakoras and dhokla.',
-    image: '/images/Chicken 65.jpg',
-    category: 'FLOURS',
-  },
-  {
-    id: 7,
-    name: 'Foxtail Millet',
-    price: 7.99,
-    description: 'Ready-to-cook millets that are light, nutty, and wholesome.',
-    image: '/images/iran chaai.png',
-    category: 'MILLETS',
-  },
-  {
-    id: 8,
-    name: 'Little Millet (Samai)',
-    price: 7.49,
-    description: 'Fast-cooking millet ideal for upma and pongal.',
-    image: '/images/Hyderabadi Biryani.jpg',
-    category: 'MILLETS',
-  },
-  {
-    id: 9,
-    name: 'Heritage Garam Masala',
-    price: 4.99,
-    description: 'Hand-roasted spices to give every curry a royal lift.',
-    image: '/images/Chicken 65.jpg',
-    category: 'SPICES',
-  },
-  {
-    id: 10,
-    name: 'Malabar Pepper Powder',
-    price: 5.99,
-    description: 'Single-origin pepper with a bold, citrusy kick.',
-    image: '/images/Vada Pav.jpg',
-    category: 'SPICES',
-  },
-  {
-    id: 11,
-    name: 'Premium Dry Fruit Mix',
-    price: 15.99,
-    description: 'Almonds, pistachios, raisins, and cashews for daily snacking.',
-    image: '/images/Vada Pav.jpg',
-    category: "DRY FRUIT'S",
-  },
-  {
-    id: 12,
-    name: 'Seed & Berry Trail Mix',
-    price: 13.5,
-    description: 'Cranberries, pumpkin seeds, and figs with jaggery glaze.',
-    image: '/images/Chicken 65.jpg',
-    category: "DRY FRUIT'S",
-  },
-  {
-    id: 13,
-    name: 'Andhra Mango Pickle',
-    price: 6.99,
-    description: 'A fiery, gingery pickle that tastes like amma’s batch.',
-    image: '/images/Chicken 65.jpg',
-    category: "PICKLE'S",
-  },
-  {
-    id: 14,
-    name: 'Lemon Avakaya Pickle',
-    price: 5.99,
-    description: 'Sun-cured lemons tossed in chili, rock salt, and oil.',
-    image: '/images/Bun Maska.jpg',
-    category: "PICKLE'S",
-  },
-  {
-    id: 15,
-    name: 'Protein-rich Mixed Dals',
-    price: 9.49,
-    description: 'Toor, masoor, moong, and chana dal pre-cleaned and ready.',
-    image: '/images/Hyderabadi Biryani.jpg',
-    category: "DAL'S",
-  },
-  {
-    id: 16,
-    name: 'Urad Chilka Dal',
-    price: 7.49,
-    description: 'Split black gram for creamy dals and crisp dosas.',
-    image: '/images/Chicken 65.jpg',
-    category: "DAL'S",
-  },
-  {
-    id: 17,
-    name: 'Lentils & Fryums Combo',
-    price: 11.99,
-    description: 'Crispy papads sitting with hearty lentils for thali days.',
-    image: '/images/Chicken 65.jpg',
-    category: "LENTIL'S & FRYUMS/ PAPAD'S",
-  },
-  {
-    id: 18,
-    name: 'Jeera Papad Basket',
-    price: 6.25,
-    description: 'Hand-rolled papads with cumin seeds and peppercorns.',
-    image: '/images/Vada Pav.jpg',
-    category: "LENTIL'S & FRYUMS/ PAPAD'S",
-  },
-  {
-    id: 19,
-    name: 'Homestyle Noodles',
-    price: 4.49,
-    description: 'Air-dried noodles that stay springy and soak sauces evenly.',
-    image: '/images/Bun Maska.jpg',
-    category: 'NOODLES',
-  },
-  {
-    id: 20,
-    name: 'Hakka Wheat Noodles',
-    price: 5.99,
-    description: 'Whole wheat noodles that stir-fry without turning soggy.',
-    image: '/images/Chicken 65.jpg',
-    category: 'NOODLES',
-  },
-];
+import { menuItems } from '@/app/data/menuItems';
 
 const categoryTabs = [
   'ATTA',
@@ -187,6 +25,24 @@ const collectionOptions = [
   { label: 'Snacks', value: 'snacks', hours: '12:00 PM – 10:00 PM' },
   { label: 'Catering', value: 'catering', hours: '9:00 AM – 11:00 PM' },
 ];
+
+// Map each collection to the categories it should show
+const collectionCategoryMap: Record<string, string[]> = {
+  grocery: categoryTabs,
+  snacks: [
+    "DRY FRUIT'S",
+    "PICKLE'S",
+    "LENTIL'S & FRYUMS/ PAPAD'S",
+    'NOODLES',
+  ],
+  catering: [
+    'ATTA',
+    'FLOURS',
+    'MILLETS',
+    "DAL'S",
+    'SPICES',
+  ],
+};
 
 interface MenuProps {
   onCartUpdate?: () => void;
@@ -250,6 +106,16 @@ const Menu = ({ onCartUpdate }: MenuProps) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // When collection changes, make sure activeCategory stays within that collection
+  useEffect(() => {
+    const allowedCategories = collectionCategoryMap[activeCollection];
+    if (!allowedCategories || allowedCategories.length === 0) return;
+
+    setActiveCategory((prev) =>
+      allowedCategories.includes(prev) ? prev : allowedCategories[0]
+    );
+  }, [activeCollection]);
+
   const scrollCategories = (direction: 'left' | 'right') => {
     const el = categoryScrollRef.current;
     if (!el) return;
@@ -277,15 +143,20 @@ const Menu = ({ onCartUpdate }: MenuProps) => {
 
   const normalizedSearch = searchTerm.trim().toLowerCase();
   const searchActive = normalizedSearch.length > 0;
+  const allowedCategoriesForCollection =
+    collectionCategoryMap[activeCollection] ?? categoryTabs;
+
   const filteredItems = menuItems.filter((item) => {
+    const inCollection = allowedCategoriesForCollection.includes(item.category);
     const matchesSearch =
       item.name.toLowerCase().includes(normalizedSearch) ||
       item.description.toLowerCase().includes(normalizedSearch) ||
       item.category.toLowerCase().includes(normalizedSearch);
+
     if (searchActive) {
-      return matchesSearch;
+      return matchesSearch && inCollection;
     }
-    return item.category === activeCategory;
+    return item.category === activeCategory && inCollection;
   });
 
   const currentCollection =
@@ -376,14 +247,14 @@ const Menu = ({ onCartUpdate }: MenuProps) => {
                 <span className="h-0.5 w-6 bg-[#f5eddc]" />
               </div>
               <div className="relative flex-1">
-                <div className="mb-3 flex justify-between text-[11px] tracking-[0.35em] uppercase text-[#f5eddc]/60">
+                <div className="mb-3 flex justify-between text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.35em] uppercase text-[#f5eddc]/60">
                   <span>{searchActive ? 'Search results' : 'Browse categories'}</span>
-                  {!searchActive && <span>{activeCategory}</span>}
+                  {!searchActive && <span className="hidden xs:inline-block">{activeCategory}</span>}
                   {searchActive && <span>{filteredItems.length} items</span>}
                 </div>
                 <div
                   ref={categoryScrollRef}
-                  className="flex gap-6 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="flex gap-4 sm:gap-6 overflow-x-auto pb-2 sm:pb-3 -mx-2 px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 >
                   {categoryTabs.map((category) => {
                     const isActive = category === activeCategory;
@@ -391,7 +262,7 @@ const Menu = ({ onCartUpdate }: MenuProps) => {
                       <button
                         key={category}
                         onClick={() => setActiveCategory(category)}
-                        className={`relative pb-3 text-xs font-semibold tracking-[0.25em] uppercase transition ${
+                        className={`relative pb-2 sm:pb-3 px-2 sm:px-0 text-[10px] sm:text-xs font-semibold tracking-[0.12em] sm:tracking-[0.25em] uppercase whitespace-nowrap transition ${
                           isActive ? 'text-[#f5eddc]' : 'text-[#f5eddc]/40'
                         }`}
                       >

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ShoppingCart, CreditCard, MapPin, User } from 'lucide-react';
+import { menuItems } from '@/app/data/menuItems';
 
 // Define types
 type CartItem = {
@@ -12,73 +13,8 @@ type CartItem = {
   quantity: number;
 };
 
-type MenuItem = {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
-  availableTime: string[];
-};
-
-// Menu items data (same as in Menu component)
-const menuItems: MenuItem[] = [
-  {
-    id: 1,
-    name: 'Masala Chai',
-    price: 3.49,
-    description: 'Slow-brewed, aromatic, soul-warming.',
-    image: '/images/iran chaai.png',
-    category: 'Beverages',
-    availableTime: ['breakfast', 'lunch', 'dinner']
-  },
-  {
-    id: 2,
-    name: 'Osmania Biscuits',
-    price: 4.99,
-    description: 'Crisp, buttery, perfect with chai.',
-    image: '/images/osimania biskets.png',
-    category: 'Snacks',
-    availableTime: ['breakfast', 'tea']
-  },
-  {
-    id: 3,
-    name: 'Hyderabadi Biryani',
-    price: 14.99,
-    description: 'Long-grain basmati, rich masala, royal aroma.',
-    image: '/images/Hyderabadi Biryani.jpg',
-    category: 'Main Course',
-    availableTime: ['lunch', 'dinner']
-  },
-  {
-    id: 4,
-    name: 'Bun Maska',
-    price: 5.99,
-    description: 'Pillow-soft bun, lashings of butter.',
-    image: '/images/Bun Maska.jpg',
-    category: 'Snacks',
-    availableTime: ['breakfast', 'tea']
-  },
-  {
-    id: 5,
-    name: 'Vada Pav',
-    price: 6.99,
-    description: 'Mumbai\'s favorite — fiery & fun.',
-    image: '/images/Vada Pav.jpg',
-    category: 'Street Food',
-    availableTime: ['lunch', 'dinner']
-  },
-  {
-    id: 6,
-    name: '',
-    price: 12.99,
-    description: 'Crispy, tangy, dangerously addictive.',
-    image: '/images/.jpg',
-    category: 'Appetizers',
-    availableTime: ['lunch', 'dinner']
-  }
-];
+// Reuse shared MenuItem type shape from data file (only fields we care about)
+type MenuItem = (typeof menuItems)[number];
 
 export default function CheckoutPage() {
   const router = useRouter();

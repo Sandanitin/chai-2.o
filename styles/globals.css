@@ -136,17 +136,15 @@ html, body {
   }
 }
 
-/* Animation optimizations for mobile */
+/* Animation optimizations for mobile (keep UI feeling alive) */
 @media (max-width: 768px) {
+  /* Slightly shorten animations/transitions instead of disabling them */
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 150ms !important;
   }
-  
-  /* Keep important animations */
+
   .animate-bounce, .animate-pulse, .animate-\[marquee_30s_linear_infinite\] {
-    animation-duration: 1s !important;
+    animation-duration: 1.2s !important;
   }
 }
 
