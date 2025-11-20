@@ -244,7 +244,7 @@ export default function CheckoutPage() {
               </svg>
             </div>
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">Order Placed Successfully!</h2>
-            <p className="text-gray-600 mb-6">Thank you for your order. We've sent a confirmation email to your inbox.</p>
+            <p className="text-gray-600 mb-6">Thank you for your order. We&apos;ve sent a confirmation email to your inbox.</p>
             <p className="text-gray-500 text-sm">Redirecting to homepage...</p>
           </div>
         </div>

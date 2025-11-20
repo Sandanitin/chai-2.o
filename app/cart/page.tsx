@@ -128,7 +128,7 @@ export default function CartPage() {
           <div className="bg-[#120a07] rounded-2xl shadow-sm p-8 text-center border border-[#2d1a11]">
             <ShoppingCart className="h-16 w-16 text-[#f5eddc]/30 mx-auto mb-4" />
             <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
-            <p className="text-[#f5eddc]/70 mb-6">Looks like you haven't added anything to your cart yet</p>
+            <p className="text-[#f5eddc]/70 mb-6">Looks like you haven&apos;t added anything to your cart yet</p>
             <Button 
               onClick={() => router.push('/')}
               className="bg-[#c87534] hover:bg-[#d8843d] text-[#120a06]"
