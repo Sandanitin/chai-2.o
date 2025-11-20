@@ -15,6 +15,28 @@ const Navbar = ({ cartCount }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+
+  // Check login status
+  const checkLoginStatus = () => {
+    if (typeof window !== 'undefined') {
+      const user = localStorage.getItem('user');
+      if (user) {
+        try {
+          const userData = JSON.parse(user);
+          setIsLoggedIn(true);
+          setUserName(userData.name || '');
+        } catch (e) {
+          setIsLoggedIn(false);
+          setUserName('');
+        }
+      } else {
+        setIsLoggedIn(false);
+        setUserName('');
+      }
+    }
+  };
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -23,6 +45,29 @@ const Navbar = ({ cartCount }: NavbarProps) => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Check login status on mount
+  useEffect(() => {
+    checkLoginStatus();
+    
+    // Listen for storage changes (in case user logs in/out in another tab)
+    const handleStorageChange = () => {
+      checkLoginStatus();
+    };
+    
+    // Listen for custom logout event
+    const handleLogout = () => {
+      checkLoginStatus();
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('user-logout', handleLogout);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('user-logout', handleLogout);
+    };
   }, []);
 
   // Close menu when resizing to larger screens
@@ -52,6 +97,19 @@ const Navbar = ({ cartCount }: NavbarProps) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
+
+  // Handle logout
+  const handleLogout = () => {
+    // Clear user session from localStorage
+    localStorage.removeItem('user');
+    // Update state
+    setIsLoggedIn(false);
+    setUserName('');
+    // Dispatch a custom event to notify other components of logout
+    window.dispatchEvent(new CustomEvent('user-logout'));
+    // Redirect to home page
+    router.push("/");
+  };
 
   return (
     <nav 
@@ -110,12 +168,35 @@ const Navbar = ({ cartCount }: NavbarProps) => {
 
           {/* Auth Buttons - Hidden on mobile, visible on desktop */}
           <div className="hidden md:flex items-center space-x-2">
-            <Button variant="outline" size="default" asChild className="text-sm h-8 px-3">
-              <Link href="/login">Login</Link>
-            </Button>
-            <Button size="default" asChild className="text-sm h-8 px-3">
-              <Link href="/signup">Sign Up</Link>
-            </Button>
+            {isLoggedIn ? (
+              <>
+                <Button 
+                  variant="outline" 
+                  size="default" 
+                  className="text-sm h-8 px-3"
+                  onClick={() => router.push('/profile')}
+                >
+                  {userName}
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="default" 
+                  className="text-sm h-8 px-3"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" size="default" asChild className="text-sm h-8 px-3">
+                  <Link href="/login">Login</Link>
+                </Button>
+                <Button size="default" asChild className="text-sm h-8 px-3">
+                  <Link href="/signup">Sign Up</Link>
+                </Button>
+              </>
+            )}
           </div>
           
           {/* Mobile Auth Button */}
@@ -133,28 +214,57 @@ const Navbar = ({ cartCount }: NavbarProps) => {
             {isAuthOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-[#120a07] border border-[#2d1a11] rounded-lg shadow-lg z-50">
                 <div className="py-1">
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-start px-4 py-2 text-left hover:bg-[#1c120c] text-[#f5eddc]"
-                    asChild
-                    onClick={() => {
-                      setIsAuthOpen(false);
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    <Link href="/login">Login</Link>
-                  </Button>
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-start px-4 py-2 text-left hover:bg-[#1c120c] text-[#f5eddc]"
-                    asChild
-                    onClick={() => {
-                      setIsAuthOpen(false);
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    <Link href="/signup">Sign Up</Link>
-                  </Button>
+                  {isLoggedIn ? (
+                    <>
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start px-4 py-2 text-left hover:bg-[#1c120c] text-[#f5eddc]"
+                        onClick={() => {
+                          setIsAuthOpen(false);
+                          setIsMenuOpen(false);
+                          router.push('/profile');
+                        }}
+                      >
+                        Profile
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start px-4 py-2 text-left hover:bg-[#1c120c] text-[#f5eddc]"
+                        onClick={() => {
+                          setIsAuthOpen(false);
+                          setIsMenuOpen(false);
+                          handleLogout();
+                        }}
+                      >
+                        Logout
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start px-4 py-2 text-left hover:bg-[#1c120c] text-[#f5eddc]"
+                        asChild
+                        onClick={() => {
+                          setIsAuthOpen(false);
+                          setIsMenuOpen(false);
+                        }}
+                      >
+                        <Link href="/login">Login</Link>
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start px-4 py-2 text-left hover:bg-[#1c120c] text-[#f5eddc]"
+                        asChild
+                        onClick={() => {
+                          setIsAuthOpen(false);
+                          setIsMenuOpen(false);
+                        }}
+                      >
+                        <Link href="/signup">Sign Up</Link>
+                      </Button>
+                    </>
+                  )}
                 </div>
               </div>
             )}

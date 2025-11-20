@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff, User, Mail, Phone, MapPin, CreditCard } from "lucide-react";
+import { Eye, EyeOff, User, Mail, Phone, MapPin, CreditCard, Home } from "lucide-react";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -239,12 +239,6 @@ export default function ProfilePage() {
     });
   };
 
-  const handleLogout = () => {
-    // Clear user session from localStorage
-    localStorage.removeItem('user');
-    router.push("/");
-  };
-
   if (!isClient) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-emerald-50 flex items-center justify-center">
@@ -258,13 +252,6 @@ export default function ProfilePage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-slate-800">My Profile</h1>
-          <Button 
-            variant="outline" 
-            onClick={handleLogout}
-            className="border-emerald-600 text-emerald-700 hover:bg-emerald-50"
-          >
-            Logout
-          </Button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -327,6 +314,13 @@ export default function ProfilePage() {
                   >
                     <CreditCard className="h-5 w-5 mr-3" />
                     Loyalty Points
+                  </button>
+                  <button
+                    onClick={() => router.push("/")}
+                    className="w-full text-left px-4 py-3 rounded-xl flex items-center text-slate-600 hover:bg-slate-100"
+                  >
+                    <Home className="h-5 w-5 mr-3" />
+                    Home Page
                   </button>
                 </nav>
               </CardContent>
