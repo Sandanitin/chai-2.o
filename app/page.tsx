@@ -342,9 +342,9 @@ export default function Page() {
                 <a href="#specials" className="flex items-center justify-center gap-2">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
                   </span>
-                  Today's Special
+                  Today&apos;s Special
                 </a>
               </Button>
             </div>
@@ -412,9 +412,9 @@ export default function Page() {
       <Section id="specials" className="py-16 bg-[#0b0503]">
         <Container>
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#f5eddc] mb-4">Today's Special</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#f5eddc] mb-4">Today&apos;s Special</h2>
             <p className="text-[#f5eddc]/80 max-w-2xl mx-auto">
-              Discover our chef's special creations for the day, crafted with the finest ingredients and authentic flavors.
+              Discover our chef&apos;s special creations for the day, crafted with the finest ingredients and authentic flavors.
             </p>
           </div>
           
@@ -521,12 +521,12 @@ export default function Page() {
               >
                 <div className="relative z-10 bg-[#1c0f08]/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#2d1a11]">
                   <p className="text-lg leading-relaxed text-[#f5eddc]/85 mb-8 relative">
-                    <span className="absolute -left-6 -top-4 text-6xl text-[#f5eddc]/20 font-serif">"</span>
+                    <span className="absolute -left-6 -top-4 text-6xl text-[#f5eddc]/20 font-serif">&quot;</span>
                     Born from Hyderabadi passion and Indian street‑food nostalgia, Chai Bisket blends the warmth of 
                     traditional <em className="font-medium text-[#f0a35c]">chai addas</em> with a fresh, contemporary vibe. 
                     Think banana leaves, coastal breezes, and the timeless silhouettes of Charminar, Gateway of India, 
                     and the Taj — all on your plate, in your city.
-                    <span className="text-[#f5eddc]/20 font-serif text-6xl absolute -right-4 -bottom-8">"</span>
+                    <span className="text-[#f5eddc]/20 font-serif text-6xl absolute -right-4 -bottom-8">&quot;</span>
                   </p>
                   
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -577,8 +577,8 @@ export default function Page() {
                     priority={isClient}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                    <div className="bg-[#120a07]/90 backdrop-blur-sm p-4 rounded-xl border border-[#2d1a11] shadow-lg">
-                      <div className="text-xl font-bold text-[#f0a35c]">"Mass & class — same glass."</div>
+                      <div className="bg-[#120a07]/90 backdrop-blur-sm p-4 rounded-xl border border-[#2d1a11] shadow-lg">
+                      <div className="text-xl font-bold text-[#f0a35c]">&quot;Mass &amp; class — same glass.&quot;</div>
                       <div className="text-sm text-[#f5eddc]/70 mt-1">— Hyderabadi proverb (our vibe)</div>
                     </div>
                   </div>
