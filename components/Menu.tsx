@@ -246,7 +246,7 @@ const Menu = ({ onCartUpdate }: MenuProps) => {
               <div className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full border border-[#2d1a11] bg-[#120a07]">
                 <span className="h-0.5 w-6 bg-[#f5eddc]" />
               </div>
-              <div className="relative flex-1">
+              <div className="relative flex-1 min-w-0">
                 <div className="mb-3 flex justify-between text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.35em] uppercase text-[#f5eddc]/60">
                   <span>{searchActive ? 'Search results' : 'Browse categories'}</span>
                   {!searchActive && <span className="hidden xs:inline-block">{activeCategory}</span>}
@@ -254,27 +254,29 @@ const Menu = ({ onCartUpdate }: MenuProps) => {
                 </div>
                 <div
                   ref={categoryScrollRef}
-                  className="flex gap-4 sm:gap-6 overflow-x-auto pb-2 sm:pb-3 -mx-2 px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="overflow-x-auto pb-2 sm:pb-3 -mx-2 px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden touch-pan-x"
                 >
-                  {categoryTabs.map((category) => {
-                    const isActive = category === activeCategory;
-                    return (
-                      <button
-                        key={category}
-                        onClick={() => setActiveCategory(category)}
-                        className={`relative pb-2 sm:pb-3 px-2 sm:px-0 text-[10px] sm:text-xs font-semibold tracking-[0.12em] sm:tracking-[0.25em] uppercase whitespace-nowrap transition ${
-                          isActive ? 'text-[#f5eddc]' : 'text-[#f5eddc]/40'
-                        }`}
-                      >
-                        {category}
-                        <span
-                          className={`absolute left-0 right-0 -bottom-0.5 h-0.5 transition ${
-                            isActive ? 'bg-[#c87534]' : 'bg-transparent'
+                  <div className="flex flex-nowrap gap-3 sm:gap-6 w-max">
+                    {categoryTabs.map((category) => {
+                      const isActive = category === activeCategory;
+                      return (
+                        <button
+                          key={category}
+                          onClick={() => setActiveCategory(category)}
+                          className={`relative pb-2 sm:pb-3 px-2 text-[9px] sm:text-xs font-semibold tracking-[0.14em] sm:tracking-[0.25em] uppercase whitespace-nowrap transition ${
+                            isActive ? 'text-[#f5eddc]' : 'text-[#f5eddc]/40'
                           }`}
-                        />
-                      </button>
-                    );
-                  })}
+                        >
+                          {category}
+                          <span
+                            className={`absolute left-0 right-0 -bottom-0.5 h-0.5 transition ${
+                              isActive ? 'bg-[#c87534]' : 'bg-transparent'
+                            }`}
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-[#2d1a11]" />
               </div>

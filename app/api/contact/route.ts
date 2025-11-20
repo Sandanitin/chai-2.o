@@ -8,6 +8,9 @@ const SHEETS_WEBHOOK_URL = process.env.SHEETS_WEBHOOK_URL || "";
 const FROM = process.env.CONTACT_FROM || "Chai Bisket <onboarding@resend.dev>";
 const SUBJECT = process.env.CONTACT_SUBJECT || "New Catering / Contact Message from Chai Bisket";
 
+const EMAIL_CONFIGURED = !!resend;
+const SHEET_CONFIGURED = !!SHEETS_WEBHOOK_URL;
+
 // Add this at the beginning of the file
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -24,6 +27,14 @@ export async function POST(req: Request) {
     }
     if (!name || !email || !message) {
       return NextResponse.json({ ok: false, error: "Missing required fields." }, { status: 400 });
+    }
+
+    // If no delivery mechanism is configured, fail clearly instead of pretending success
+    if (!EMAIL_CONFIGURED && !SHEET_CONFIGURED) {
+      return NextResponse.json(
+        { ok: false, error: "Email service is not configured on the server." },
+        { status: 500 }
+      );
     }
 
     // 1) Email

@@ -122,12 +122,12 @@ const Navbar = ({ cartCount }: NavbarProps) => {
         
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3">
-          <div className="h-10 w-10 rounded-full border border-[#2d1a11] overflow-hidden bg-[#120a07]">
+          <div className="h-14 w-14 rounded-full border-2 border-[#2d1a11] overflow-hidden bg-[#120a07] shadow-md shadow-black/40">
             <img src="/images/logo.jpg" alt="Chai Bisket" className="h-full w-full object-cover" />
           </div>
           <div>
-            <span className="text-lg font-semibold text-[#f5eddc] block leading-tight">Chai Bisket</span>
-            <span className="text-xs uppercase tracking-[0.3em] text-[#f5eddc]/60">Café & Grocery</span>
+            <span className="text-2xl font-semibold text-[#f5eddc] block leading-tight">Chai Bisket</span>
+            <span className="text-[11px] uppercase tracking-[0.3em] text-[#f5eddc]/70">Café & Grocery</span>
           </div>
         </Link>
 
