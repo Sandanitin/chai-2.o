@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ShoppingCart, Plus, Minus, X } from 'lucide-react';
 import { menuItems } from '@/app/data/menuItems';
+import Image from 'next/image';
 
 // Define types
 type CartItem = {
@@ -106,7 +107,9 @@ export default function CartPage() {
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <img src="/images/logo.jpg" alt="Chai Bisket" className="h-12 w-12 rounded-full object-cover border border-[#2d1a11]" />
+            <div className="h-12 w-12 rounded-full border border-[#2d1a11] overflow-hidden">
+              <Image src="/images/logo.jpg" alt="Chai Bisket" width={48} height={48} className="object-cover" />
+            </div>
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-[#f5eddc]/60">Chai Bisket LLC</p>
               <h1 className="text-3xl md:text-4xl font-bold text-[#f5eddc]">Your Cart</h1>
@@ -148,10 +151,11 @@ export default function CartPage() {
                     return (
                       <div key={item.id} className="p-6 flex flex-col sm:flex-row gap-4">
                         <div className="relative w-full sm:w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border border-[#2d1a11]">
-                          <img
+                          <Image
                             src={menuItem.image}
                             alt={menuItem.name}
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
                               target.src = '/placeholder.svg';

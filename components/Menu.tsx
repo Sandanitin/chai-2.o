@@ -21,14 +21,14 @@ const categoryTabs = [
 ];
 
 const collectionOptions = [
-  { label: 'Grocery', value: 'grocery', hours: '10:30 AM – 9:00 PM' },
+  { label: 'Restaurant', value: 'restaurant', hours: '10:30 AM – 9:00 PM' },
   { label: 'Snacks', value: 'snacks', hours: '12:00 PM – 10:00 PM' },
   { label: 'Catering', value: 'catering', hours: '9:00 AM – 11:00 PM' },
 ];
 
 // Map each collection to the categories it should show
 const collectionCategoryMap: Record<string, string[]> = {
-  grocery: categoryTabs,
+  restaurant: categoryTabs,
   snacks: [
     "DRY FRUIT'S",
     "PICKLE'S",
@@ -51,7 +51,7 @@ interface MenuProps {
 const Menu = ({ onCartUpdate }: MenuProps) => {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState(categoryTabs[0]);
-  const [activeCollection, setActiveCollection] = useState(collectionOptions[0].value);
+  const [activeCollection, setActiveCollection] = useState('restaurant');
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState<{ id: number; quantity: number }[]>([]);
   const [isClient, setIsClient] = useState(false);

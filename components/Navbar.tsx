@@ -5,6 +5,7 @@ import { ShoppingCart, Utensils, Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface NavbarProps {
   cartCount: number;
@@ -26,7 +27,12 @@ const Navbar = ({ cartCount }: NavbarProps) => {
         try {
           const userData = JSON.parse(user);
           setIsLoggedIn(true);
-          setUserName(userData.name || '');
+          // Show "Guest" for guest users
+          if (userData.isGuest) {
+            setUserName('Guest');
+          } else {
+            setUserName(userData.name || '');
+          }
         } catch (e) {
           setIsLoggedIn(false);
           setUserName('');
@@ -122,8 +128,8 @@ const Navbar = ({ cartCount }: NavbarProps) => {
         
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3">
-          <div className="h-10 w-10 rounded-full border border-[#2d1a11] overflow-hidden bg-[#120a07]">
-            <img src="/images/logo.jpg" alt="Chai Bisket" className="h-full w-full object-cover" />
+          <div className="h-14 w-14 rounded-full border border-[#2d1a11] overflow-hidden bg-[#120a07]">
+            <Image src="/images/logo.jpg" alt="Chai Bisket" width={56} height={56} className="object-cover" />
           </div>
           <div>
             <span className="text-lg font-semibold text-[#f5eddc] block leading-tight">Chai Bisket</span>

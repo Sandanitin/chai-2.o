@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import { menuData } from '@/app/data/groceryData';
 
 const MenuInfo = () => {
-  const { generalInfo, lunch, dinner } = menuData;
+  const generalInfo = { timing: '10:30 AM – 9:00 PM' };
+  const lunch = { title: 'Lunch Specials', timing: '11:30 AM – 3:30 PM' };
+  const dinner = { title: 'Dinner', timing: '5:30 PM – 10:00 PM' };
 
   return (
     <div className="bg-[#120a07] rounded-2xl border border-[#2d1a11] p-6 shadow-sm">

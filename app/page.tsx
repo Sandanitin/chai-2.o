@@ -192,6 +192,44 @@ export default function Page() {
     return 0;
   };
 
+  // Add item to cart
+  const addToCart = (itemId: number) => {
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem('cart');
+      let cart = [];
+      
+      if (savedCart) {
+        try {
+          cart = JSON.parse(savedCart);
+        } catch (e) {
+          cart = [];
+        }
+      }
+      
+      // Check if item already exists in cart
+      const existingItem = cart.find((item: { id: number }) => item.id === itemId);
+      
+      if (existingItem) {
+        // Update quantity
+        cart = cart.map((item: { id: number; quantity: number }) =>
+          item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        // Add new item
+        cart.push({ id: itemId, quantity: 1 });
+      }
+      
+      // Save to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Update cart count
+      setCartCount(getCartCount());
+      
+      // Dispatch event to notify other components
+      window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { cart } }));
+    }
+  };
+
   // Check login status
   const checkLoginStatus = () => {
     if (typeof window !== 'undefined') {
@@ -435,7 +473,10 @@ export default function Page() {
                   <span className="text-amber-200 font-bold">$12.99</span>
                 </div>
                 <p className="text-[#f5eddc]/80 mb-4">Authentic dum biryani with tender meat and fragrant basmati rice.</p>
-                <Button className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]">
+                <Button 
+                  onClick={() => addToCart(15)}
+                  className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]"
+                >
                   Add to Cart
                 </Button>
               </div>
@@ -457,7 +498,10 @@ export default function Page() {
                   <span className="text-amber-200 font-bold">$3.99</span>
                 </div>
                 <p className="text-[#f5eddc]/80 mb-4">Traditional strong tea with spices, served with Osmania biscuits.</p>
-                <Button className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]">
+                <Button 
+                  onClick={() => addToCart(4)}
+                  className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]"
+                >
                   Add to Cart
                 </Button>
               </div>
@@ -479,7 +523,10 @@ export default function Page() {
                   <span className="text-amber-200 font-bold">$9.99</span>
                 </div>
                 <p className="text-[#f5eddc]/80 mb-4">Spicy deep-fried chicken with authentic South Indian spices.</p>
-                <Button className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]">
+                <Button 
+                  onClick={() => addToCart(13)}
+                  className="w-full bg-gradient-to-r from-[#f0a35c] to-[#d97a3a] hover:from-[#f5b97a] hover:to-[#e08a4a]"
+                >
                   Add to Cart
                 </Button>
               </div>

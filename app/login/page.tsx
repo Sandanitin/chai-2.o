@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import Image from "next/image";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -117,12 +118,64 @@ export default function LoginPage() {
     }
   };
 
+  const handleGuestLogin = () => {
+    try {
+      // Create a guest user session with more complete data
+      const guestUser = {
+        id: `guest_${Date.now()}`,
+        name: 'Guest User',
+        email: `guest_${Math.random().toString(36).substr(2, 9)}@chaibisket.com`,
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        joinDate: new Date().toISOString(),
+        loyaltyPoints: 0,
+        isGuest: true,
+        guestToken: `gt_${Math.random().toString(36).substr(2, 16)}`,
+      };
+      
+      // Save to session with error handling
+      try {
+        localStorage.setItem('user', JSON.stringify(guestUser));
+        // Also set a flag to identify guest users across page refreshes
+        localStorage.setItem('isGuest', 'true');
+        
+        // Dispatch event to update all components about the login
+        window.dispatchEvent(new CustomEvent('user-login', { detail: guestUser }));
+        
+        // Redirect to home with a small delay to ensure state updates
+        setTimeout(() => {
+          router.push('/');
+          router.refresh(); // Force a refresh to update all components
+        }, 100);
+      } catch (error) {
+        console.error('Error saving guest session:', error);
+        setErrors({
+          email: "",
+          password: "",
+          general: "Could not save guest session. Please try again."
+        });
+      }
+    } catch (error) {
+      console.error('Error creating guest session:', error);
+      setErrors({
+        email: "",
+        password: "",
+        general: "An error occurred. Please try again."
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#050302] flex items-center justify-center p-4">
       <Card className="w-full max-w-md rounded-3xl shadow-xl border border-[#2d1a11] bg-[#120a07] text-[#f5eddc]">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <img src="/images/logo.jpg" alt="Chai Bisket" className="h-16 w-16 rounded-full object-cover border border-[#2d1a11]" />
+            <div className="h-24 w-24 rounded-full border-2 border-[#2d1a11] overflow-hidden">
+              <Image src="/images/logo.jpg" alt="Chai Bisket" width={96} height={96} className="object-cover" />
+            </div>
           </div>
           <CardTitle className="text-2xl text-[#f5eddc]">Welcome Back</CardTitle>
           <p className="text-sm text-[#f5eddc]/70">Sign in to your Chai Bisket account</p>
@@ -193,6 +246,14 @@ export default function LoginPage() {
               disabled={isLoading}
             >
               {isLoading ? "Signing in..." : "Sign In"}
+            </Button>
+            
+            <Button 
+              type="button" 
+              onClick={handleGuestLogin}
+              className="w-full bg-[#120a07] hover:bg-[#1c0f08] text-[#f5eddc] border border-[#2d1a11] font-medium py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 mt-3"
+            >
+              Continue as Guest
             </Button>
           </form>
           
